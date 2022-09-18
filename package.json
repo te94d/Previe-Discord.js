@@ -1,0 +1,25 @@
+{
+  "name": "previe-discord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/te94d/Previe-Discord.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/te94d/Previe-Discord.js/issues"
+  },
+  "homepage": "https://github.com/te94d/Previe-Discord.js#readme",
+  "dependencies": {
+    "@discordjs/rest": "^1.1.0",
+    "discord-api-types": "^0.37.10",
+    "discord.js": "^14.3.0",
+    "dotenv": "^16.0.2"
+  }
+}
