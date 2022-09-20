@@ -30,3 +30,12 @@ $ npm install -g nodemon //管理者権限で実行
   "discord_token" : "<token>"
 }
 ```
+### 実行
+```
+$ node src/index.js
+```
+開発するときはnodemonを用いることでコード変更時に自動でサーバ再起することが可能
+```
+$ cd src
+$ nodemon
+```
