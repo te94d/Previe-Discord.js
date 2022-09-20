@@ -18,8 +18,10 @@
   "homepage": "https://github.com/te94d/Previe-Discord.js#readme",
   "dependencies": {
     "@discordjs/rest": "^1.1.0",
+    "ascii-table": "^0.0.9",
     "discord-api-types": "^0.37.10",
     "discord.js": "^14.3.0",
-    "dotenv": "^16.0.2"
+    "dotenv": "^16.0.2",
+    "fs": "^0.0.1-security"
   }
 }
