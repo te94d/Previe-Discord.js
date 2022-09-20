@@ -19,10 +19,15 @@ $ npm init
 $ npm install discord.js
 $ npm install discord.js @discordjs/rest discord-api-types
 $ npm install dotenv
+$ npm install fs
+$ npm install ascii-table
+$ npm install -g nodemon //管理者権限で実行
 ```
 [ffmpeg](https://ffmpeg.org/) にアクセスしwindowsビルドのものをダウンロードする。  
 ダウンロードしたファイルを解凍し、binフォルダの中にある`ffmpeg.exe`を`ytdl.py`と同じ階層に置いておく。  
-`.env`ファイルを作成し`.env.sample`の中身を記述する。
+`config.json`ファイルを作成し`config.sample.json`の中身を記述する。
 ```
-discord_token = <token>
+{
+  "discord_token" : "<token>"
+}
 ```

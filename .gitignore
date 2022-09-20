@@ -1,2 +1,2 @@
 # gitの追跡から除外
-/.env
+/config.json
