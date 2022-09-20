@@ -18,7 +18,6 @@ $ npm init
 ```
 $ npm install discord.js
 $ npm install discord.js @discordjs/rest discord-api-types
-$ npm install dotenv
 $ npm install fs
 $ npm install ascii-table
 $ npm install -g nodemon //管理者権限で実行
