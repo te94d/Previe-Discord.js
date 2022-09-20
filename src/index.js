@@ -1,24 +1,16 @@
-require('dotenv').config();
-const {token} = process.env;
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, Partials } = require('discord.js');
+const { Guilds, GuildMembers, GuildMessages} = GatewayIntentBits;
+const { User, Message, GuildMember, ThreadMember, channel} = Partials;
+
+const {loadEvents} = require('./Handlers/eventHandler');
+
 const client = new Client({
-	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages],
+	intents: [Guilds, GuildMembers, GuildMessages],
+	partials: [User, Message, GuildMember, ThreadMember],
 });
 
-//起動確認
-client.once('ready', () => {
-    console.log(`${client.user.tag} Ready`);
+client.config = require('../config.json');
+
+client.login(client.config.discord_token).then(() => {
+	loadEvents(client);
 });
-
-//返答
-client.on('messageCreate', message => {
-    if (message.author.bot) {
-        return;
-    }
-
-    if (message.content == 'hi') {
-        message.channel.send('hi!');
-    }
-});
-
-client.login(token);
