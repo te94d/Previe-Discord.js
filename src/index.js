@@ -1,23 +1,24 @@
-const discord = require("discord.js");
-const client = new discord.Client();
-const prefix = "%%";
-const fs = require("fs");
-let command_int = 0
-for (const file of commandFiles) {
-	command_int++;
-	const command = require(`./command/${file}`);
-	console.log(`${file} がロードされました。`)
-	client.commands.set(command.name, command);
-}
-console.log(`合計${command_int}個がロードされました。`)
+require('dotenv').config();
+const {token} = process.env;
+const { Client, GatewayIntentBits } = require('discord.js');
+const client = new Client({
+	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages],
+});
 
-client.on("message", async message => {
-	if (message.content.indexOf(prefix) !== 0) return;
-	const args = message.content
-		.slice(prefix.length)
-		.trim()
-		.split(/ +/g); 
-	const command = args.shift().toLowerCase(); //引数
-	//↓command.jsの指定 'command'については以下に詳しく
-  client.commands.get('command').execute(client,command,args,message);
-})
+//起動確認
+client.once('ready', () => {
+    console.log(`${client.user.tag} Ready`);
+});
+
+//返答
+client.on('messageCreate', message => {
+    if (message.author.bot) {
+        return;
+    }
+
+    if (message.content == 'hi') {
+        message.channel.send('hi!');
+    }
+});
+
+client.login(token);
