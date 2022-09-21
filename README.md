@@ -21,15 +21,18 @@ $ npm install discord.js @discordjs/rest discord-api-types
 $ npm install fs
 $ npm install ascii-table
 $ npm install -g nodemon //管理者権限で実行
+$ npm install mongoose
 ```
 [ffmpeg](https://ffmpeg.org/) にアクセスしwindowsビルドのものをダウンロードする。  
-ダウンロードしたファイルを解凍し、binフォルダの中にある`ffmpeg.exe`を`ytdl.py`と同じ階層に置いておく。  
+ダウンロードしたファイルを解凍し、binフォルダの中にある`ffmpeg.exe`を`未実装`と同じ階層に置いておく。  
 `config.json`ファイルを作成し`config.sample.json`の中身を記述する。
 ```
 {
-  "discord_token" : "<token>"
+  "discord_token" : "<token>",
+  "mongodb" : "<token>"
 }
 ```
+TOKEN | [Discord Developer](https://discord.com/developers/applications/) | [MongoDB](https://www.mongodb.com/) |
 ### 実行
 ```
 $ node src/index.js

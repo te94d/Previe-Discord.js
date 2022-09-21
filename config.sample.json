@@ -1,3 +1,4 @@
 {
-  "discord_token" : "<token>"
+  "discord_token" : "<token>",
+  "mongodb" : "<token>"
 }
