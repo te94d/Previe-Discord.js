@@ -31,6 +31,7 @@ module.exports = {
 
     //  download(mergePath);
     //});
+    
     //exec(`ffmpeg -y -i ${destFilePath}.mp4 -i ${destFilePath}.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4`);
 
     interaction.reply({content: "OK", ephemeral: true}) // ephemeral means only visible for yourself
