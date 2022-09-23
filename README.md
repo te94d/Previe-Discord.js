@@ -22,6 +22,11 @@ $ npm install fs
 $ npm install ascii-table
 $ npm install -g nodemon //管理者権限で実行
 $ npm install mongoose
+$ npm i ytdl-core
+$ npm install --save fluent-ffmpeg
+$ npm install @ffmpeg-installer/ffmpeg
+
+$ npm install python-shell
 ```
 [ffmpeg](https://ffmpeg.org/) にアクセスしwindowsビルドのものをダウンロードする。  
 ダウンロードしたファイルを解凍し、binフォルダの中にある`ffmpeg.exe`を`未実装`と同じ階層に置いておく。  
@@ -39,6 +44,5 @@ $ node src/index.js
 ```
 開発するときはnodemonを用いることでコード変更時に自動でサーバ再起することが可能
 ```
-$ cd src
-$ nodemon
+$ nodemon src/index.js
 ```
