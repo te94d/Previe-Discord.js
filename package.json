@@ -26,6 +26,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs": "^0.0.1-security",
     "mongoose": "^6.6.1",
+    "python-shell": "^3.0.1",
     "ytdl-core": "^4.11.2"
   }
 }
