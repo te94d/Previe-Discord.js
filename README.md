@@ -6,9 +6,11 @@ SNSプラットフォームの動画をローカルに保存してくれるBot
 ## 開発環境
 ![](https://img.shields.io/badge/Node.js-v18.9.0-blue)
 ![](https://img.shields.io/badge/discord.js-v14.3.0-blue)
-![](https://img.shields.io/badge/ytdl--core-v-blue) 
+![](https://img.shields.io/badge/python-v3.10.6-blue)
+![](https://img.shields.io/badge/yt--dlp-v2022.8.8-blue)  
 ## ビルド
-[Node.js](https://nodejs.org/ja/) をインストール
+[Node.js](https://nodejs.org/ja/) をインストール  
+[python3](https://www.python.org/) をインストール
 ### package.jsonの作成
 作成するディレクトリに移動し下記コマンドを実行する。
 ```
@@ -22,14 +24,15 @@ $ npm install fs
 $ npm install ascii-table
 $ npm install -g nodemon //管理者権限で実行
 $ npm install mongoose
-$ npm i ytdl-core
-$ npm install --save fluent-ffmpeg
-$ npm install @ffmpeg-installer/ffmpeg
-
 $ npm install python-shell
 ```
-[ffmpeg](https://ffmpeg.org/) にアクセスしwindowsビルドのものをダウンロードする。  
-ダウンロードしたファイルを解凍し、binフォルダの中にある`ffmpeg.exe`を`未実装`と同じ階層に置いておく。  
+```
+$ pip install yt-dlp
+```
+ytdl-coreを使用して実装を考えていたが、[node-ytdl-core](https://github.com/fent/node-ytdl-core) のREADMEに
+>1080p以上の動画にはオーディオが入っていないため、フルHDかつ音声付きの動画をダウンロードするには、動画と音声を個別にそれぞれダウンロードし、ffmpegでマージする必要がある。  
+
+上記の記載があったので今回はNode.jsでpythonを呼び出して[yt-dlp](https://github.com/yt-dlp/yt-dlp) を使用した。  
 `config.json`ファイルを作成し`config.sample.json`の中身を記述する。
 ```
 {
