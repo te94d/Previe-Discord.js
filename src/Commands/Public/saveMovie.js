@@ -3,17 +3,22 @@ const fs = require('fs');
 const { PythonShell } = require('python-shell');
 
 const BASE_PATH = `https://www.youtube.com/watch?v=`;
-const youtubeId = `VxR_BYPG7v4`;
-const url = BASE_PATH+youtubeId;
 
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("mp4")
   .setDescription("Download SNS-Platform videos")
-  .setDefaultMemberPermissions(PermissionFlagsBits.Administrator), // only allowed for admin users
-  execute(interaction){
-    
-    var pyshell = new PythonShell('./src/Commands/Public/py/sample.py');  
+  .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+  .addStringOption(option =>
+    option.setName("youtube-id")
+    .setDescription("Enter your youtube id.")
+    .setRequired(true)
+  ),
+  async execute(interaction){
+    const {channel, options} = interaction;
+    const youtubeId = options.getString("youtube-id");
+    const url = BASE_PATH+youtubeId;
+    var pyshell = new PythonShell('./src/Commands/Public/py/yt-dlp.py');  
     pyshell.send(url);
     pyshell.on('message', function (data) {
       console.log(data);
