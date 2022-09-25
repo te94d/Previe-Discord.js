@@ -6,7 +6,7 @@ const { opendir } = require("fs");
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("setup-welcome")
-  .setDescription("Set up your welcome message for the discord bot.")
+  .setDescription("welcome message の設定") //Set up your welcome message for the discord bot.
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addChannelOption(option =>
     option.setName("channel")
