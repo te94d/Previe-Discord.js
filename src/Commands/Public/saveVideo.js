@@ -27,7 +27,7 @@ module.exports = {
     //.setDescription('Click the button to verify your account and get access to the channels.')
     .addFields(
       { name: 'channel', value: '```取得して表示させる```', inline: false },
-      { name: 'url', value: '```'+url+'```', inline: false },
+      { name: 'url', value: '```'+ url +'```', inline: false },
     )
     //.setImage(client.user.displayAvatarURL())
     .setColor(0x8ED1E0)
