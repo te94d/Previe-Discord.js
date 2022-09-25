@@ -8,12 +8,12 @@ module.exports = {
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
   .addIntegerOption(option =>
     option.setName('amount')
-    .setDescription('Amount of messages to clear.')
+    .setDescription('削除するメッセージの数') //Amount of messages to clear.
     .setRequired(true)
     )
   .addUserOption(option =>
     option.setName('target')
-    .setDescription('Select a target to clear their messages.')
+    .setDescription('メッセージを削除する対象') //Select a target to clear their messages.
     .setRequired(false)
     ),
   
@@ -42,12 +42,12 @@ module.exports = {
       });
 
       await channel.bulkDelete(filtered).then(messages => {
-        res.setDescription(`Succesfully delted ${messages.size} messages from ${target}.`);
+        res.setDescription(`${target} のメッセージを ${messages.size} 個 チャンネルから削除しました！`); //Succesfully delted ${messages.size} messages from ${target}.
         interaction.reply({embeds: [res]}); // you can use ephemeral if you desire
       });
     } else {
       await channel.bulkDelete(amount, true).then(messages => {
-        res.setDescription(`Succesfully delted ${messages.size} messages from the channel.`);
+        res.setDescription(`チャンネルから ${messages.size} 個のメッセージを削除しました！`); //Succesfully delted ${messages.size} messages from the channel.
         interaction.reply({embeds: [res]});
       });
     }

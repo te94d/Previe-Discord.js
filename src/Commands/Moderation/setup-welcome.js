@@ -10,17 +10,17 @@ module.exports = {
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addChannelOption(option =>
     option.setName("channel")
-    .setDescription("Channel for welcome messages.")
+    .setDescription("welcome messages が投稿されるチャンネル") //Channel for welcome messages.
     .setRequired(true)
   )
   .addStringOption(option =>
     option.setName("welcome-message")
-    .setDescription("Enter your welcome message.")
+    .setDescription("welcome message の設定") //Enter your welcome message.
     .setRequired(true)
   )
   .addRoleOption(option =>
     option.setName("welcome-role")
-    .setDescription("Enter your welcome role.")
+    .setDescription("サーバーに入った際に自動的に付与されるロール") //Enter your welcome role.
     .setRequired(true)
   ),
 
@@ -32,7 +32,7 @@ module.exports = {
     const roleId = options.getRole("welcome-role");
 
     if(!interaction.guild.members.me.permissions.has(PermissionFlagsBits.SendMessages)) {
-      interaction.reply({content: "I don't have permissions for this.", ephemeral: true});
+      interaction.reply({content: "このコマンドを実行する権限がありません。", ephemeral: true}); //I don't have permissions for this.
     }
 
     welcomeSchema.findOne({Guild: interaction.guild.id}, async (err, data) => {
@@ -44,7 +44,7 @@ module.exports = {
           Role: roleId.id
         });
       }
-      interaction.reply({content: 'Succesfully created a welcome message', ephemeral: true});
+      interaction.reply({content: 'welcome message の作成に成功', ephemeral: true}); //Succesfully created a welcome message
     })
   }
 }
