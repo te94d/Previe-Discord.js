@@ -6,8 +6,8 @@ const BASE_PATH = `https://www.youtube.com/watch?v=`;
 
 module.exports = {
   data: new SlashCommandBuilder()
-  .setName("mp4")
-  .setDescription("YouTubeの動画をダウンロード") //Download SNS-Platform videos
+  .setName("mp3")
+  .setDescription("YouTubeの音声をダウンロード") //Download SNS-Platform videos
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addStringOption(option =>
     option.setName("youtube-id")
@@ -18,12 +18,12 @@ module.exports = {
     const {channel, options} = interaction;
     const youtubeId = options.getString("youtube-id");
     const url = BASE_PATH+youtubeId;
-    var pyshell = new PythonShell('./src/Commands/Public/py/yt-dlp.py');  
+    var pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-audio.py');  
     pyshell.send(url);
     pyshell.on('message', function (data) {
       console.log(data);
     });
 
-    interaction.reply({content: "OK", ephemeral: true}) // ephemeral means only visible for yourself
+    interaction.reply({content: "OK", ephemeral: false}) // ephemeral means only visible for yourself
   },
 };
