@@ -7,11 +7,11 @@ const BASE_PATH = `https://www.youtube.com/watch?v=`;
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("mp4")
-  .setDescription("Download SNS-Platform videos")
+  .setDescription("YouTubeの動画をダウンロード") //Download SNS-Platform videos
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addStringOption(option =>
     option.setName("youtube-id")
-    .setDescription("Enter your youtube id.")
+    .setDescription("動画のID") //Enter your youtube id.
     .setRequired(true)
   ),
   async execute(interaction){
