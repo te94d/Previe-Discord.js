@@ -39,11 +39,11 @@ module.exports = {
       .setTimestamp()
       .setFooter({ text: 'Save Video' });
       
-      /*let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-video.py');  
+      let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-video.py');  
       pyshell.send(url);
       pyshell.on('message', function (data) {
         console.log(data);
-      });*/
+      });
 
       interaction.reply({embeds: [mpEmbed], ephemeral: false}) // ephemeral means only visible for yourself
     });

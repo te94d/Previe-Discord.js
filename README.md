@@ -24,6 +24,7 @@ $ npm install fs
 $ npm install ascii-table
 $ npm install -g nodemon //管理者権限で実行
 $ npm install mongoose
+$ npm install ytdl-core
 $ npm install python-shell
 ```
 ```
