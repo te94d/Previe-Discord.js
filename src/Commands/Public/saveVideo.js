@@ -2,6 +2,7 @@ const {EmbedBuilder, SlashCommandBuilder, CommandInteraction, PermissionFlagsBit
 const fs = require('fs');
 const { userInfo } = require("os");
 const { PythonShell } = require('python-shell');
+const ytdl = require('ytdl-core');
 
 const BASE_PATH = `https://www.youtube.com/watch?v=`;
 
@@ -20,24 +21,31 @@ module.exports = {
     const youtubeId = options.getString("youtube-id");
     const url = BASE_PATH+youtubeId;
 
-    const mpEmbed = new EmbedBuilder()
-    .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
-    .setTitle('取得したタイトル')
-    .setURL(url)
-    //.setDescription('Click the button to verify your account and get access to the channels.')
-    .addFields(
-      { name: 'channel', value: '```取得して表示させる```', inline: false },
-      { name: 'url', value: '```'+ url +'```', inline: false },
-    )
-    //.setImage(client.user.displayAvatarURL())
-    .setColor(0x8ED1E0)
+    ytdl.getInfo(youtubeId).then(info => {
+      //console.log('動画info:', info.videoDetails);
+      const title = info.videoDetails.title;
+      console.log('[ title ]\n', title);
+      const ch = info.videoDetails.ownerChannelName;
+      console.log('[ channel ]\n', ch);
+      const thumbnail = 'https://i.ytimg.com/vi/' + youtubeId + '/maxresdefault.jpg';
 
-    var pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-video.py');  
-    pyshell.send(url);
-    pyshell.on('message', function (data) {
-      console.log(data);
+      const mpEmbed = new EmbedBuilder()
+      .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
+      .setTitle(title)
+      .setURL(url)
+      .setDescription(ch)
+      .setImage(thumbnail)
+      .setColor(0x8ED1E0)
+      .setTimestamp()
+      .setFooter({ text: 'Save Video' });
+      
+      /*let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-video.py');  
+      pyshell.send(url);
+      pyshell.on('message', function (data) {
+        console.log(data);
+      });*/
+
+      interaction.reply({embeds: [mpEmbed], ephemeral: false}) // ephemeral means only visible for yourself
     });
-
-    interaction.reply({embeds: [mpEmbed], ephemeral: false}) // ephemeral means only visible for yourself
   },
 };
