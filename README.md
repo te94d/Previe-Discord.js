@@ -1,11 +1,12 @@
 # Previe-Discord.js
 [Previe-Discord.py](https://github.com/te94d/Previe-Discord.py) のリファクタリング版
 ### Previeって？  
-Preserve + Movie = Previe（プレビィー）  
+Preserve + Video = Previe（プレビィー）  
 SNSプラットフォームの動画をローカルに保存してくれるBot
 ## 開発環境
 ![](https://img.shields.io/badge/Node.js-v18.9.0-blue)
 ![](https://img.shields.io/badge/discord.js-v14.3.0-blue)
+![](https://img.shields.io/badge/ytdl--core-v4.11.2-blue)
 ![](https://img.shields.io/badge/python-v3.10.6-blue)
 ![](https://img.shields.io/badge/yt--dlp-v2022.8.8-blue)  
 ## ビルド
@@ -33,7 +34,8 @@ $ pip install yt-dlp
 ytdl-coreを使用して実装を考えていたが、[node-ytdl-core](https://github.com/fent/node-ytdl-core) のREADMEに
 >1080p以上の動画にはオーディオが入っていないため、フルHDかつ音声付きの動画をダウンロードするには、動画と音声を個別にそれぞれダウンロードし、ffmpegでマージする必要がある。  
 
-上記の記載があったので今回はNode.jsでpythonを呼び出して[yt-dlp](https://github.com/yt-dlp/yt-dlp) を使用した。  
+上記の記載があったので、今回は動画の情報を取得する際には[node-ytdl-core](https://github.com/fent/node-ytdl-core) を使用し
+動画をダウンロードする際はNode.jsでpythonを呼び出して[yt-dlp](https://github.com/yt-dlp/yt-dlp) を使用した。  
 `config.json`ファイルを作成し`config.sample.json`の中身を記述する。
 ```
 {
