@@ -38,11 +38,19 @@ module.exports = {
       .setColor(0x8ED1E0)
       .setTimestamp()
       .setFooter({ text: 'Save Video' });
-      
+
+      let flag;
       let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-video.py');  
       pyshell.send(url);
       pyshell.on('message', function (data) {
         console.log(data);
+        if(data.endsWith("finish")) {
+          flag = 0;
+          console.log("完全に処理が行われました");
+        } else {
+          flag = 1;
+          console.log("処理が途中で修了しました");
+        }
       });
 
       interaction.reply({embeds: [mpEmbed], ephemeral: false}) // ephemeral means only visible for yourself
