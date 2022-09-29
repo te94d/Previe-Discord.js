@@ -1,2 +1,3 @@
 # gitの追跡から除外
 /config.json
+download/

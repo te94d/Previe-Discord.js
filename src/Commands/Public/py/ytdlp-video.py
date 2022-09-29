@@ -5,7 +5,6 @@ from yt_dlp import YoutubeDL
 from tkinter import filedialog
 
 url = sys.stdin.readline()
-print('video-URL : ' + url)
 
 #title取得
 ydl_opts = {} 
@@ -19,7 +18,6 @@ filename = filedialog.asksaveasfilename(
   initialfile = meta['title'],
   defaultextension = "mp4"
   )
-print(filename)
 if filename:
   ydl_opts = {
     'format': 'best',
