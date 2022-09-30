@@ -37,7 +37,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '📥 ダウンロード開始します', inline: true },
+        { name: 'state', value: '📥 ダウンロード開始します', inline: false },
       )
       .setTimestamp()
       .setFooter({ text: 'Save Video' })
@@ -51,7 +51,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '🟩 ダウンロード完了しました', inline: true },
+        { name: 'state', value: '🟩 ダウンロード完了しました', inline: false },
       )
       .setTimestamp()
       .setFooter({ text: 'Save Video' })
