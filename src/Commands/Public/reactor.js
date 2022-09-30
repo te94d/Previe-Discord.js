@@ -6,22 +6,22 @@ module.exports = {
   .setDescription("dev リアクションを返すよ"),
   async execute(interaction, client) {
     const message = await interaction.reply({
-      content: `React hera`,
+      content: "React hera",
       fetchReply: true,
     });
 
-    const emoji1 = client.emojis.cache.find(
-      (emoji) => emoji.id == "1000793300103606343"
+    const emoji = client.emojis.cache.find(
+      (emoji) => emoji.id == "1025263435149221908"
     );
 
-    message.react(emoji1);
+    message.react(emoji);
     message.react("👍");
 
     const filter = (reaction, user) => {
       return reaction.emoji.name == "👍" && user.id == interaction.user.id;
     };
 
-    const collector = message.createReactionCollector({ filter, time: 15000 });
+    const collector = message.createReactionCollector({ filter, time: 10000 });
 
     collector.on("collect", (reaction, user) => {
       console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
