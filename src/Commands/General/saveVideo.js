@@ -72,7 +72,7 @@ module.exports = {
       .setColor(0x8ED1E0);
 
       let flag;
-      let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-video.py');  
+      let pyshell = new PythonShell('./src/Commands/General/py/ytdlp-video.py');  
       pyshell.send(url);
       pyshell.on('message', function (data) {
         console.log(data);
