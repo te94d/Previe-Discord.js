@@ -10,11 +10,12 @@ module.exports = {
   data: new SlashCommandBuilder()
   .setName("help")
   .setDescription("登録されているコマンドを表示"),
-  async execute(interaction) {
+  async execute(interaction, client) {
     const emojis = {
       info: "💬",
-      moderation: "🏹",
       general: "⚔",
+      moderation: "🏹",
+      development: "🛡️",
     };
 
     const directories = [
@@ -41,14 +42,16 @@ module.exports = {
     });
 
     const embed = new EmbedBuilder()
-    .setDescription("ドロップダウンメニューからカテゴリーを選択してください")
+    .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
+    .setTitle(`Commands`)
+    .setDescription("プルダウンメニューからカテゴリーを選択してください\n\n**💬 / Info**\n**⚔ / General**\n**🏹 / Moderation**\n**🛡️ / Development**")
     .setColor(0xc0c0c0);
 
     const components = (state) => [
       new ActionRowBuilder().addComponents(
         new SelectMenuBuilder()
         .setCustomId("help-menu")
-        .setPlaceholder("Please select a category")
+        .setPlaceholder("カテゴリーを選択してください")
         .setDisabled(state)
         .addOptions(
           categories.map((cmd) => {
@@ -83,6 +86,7 @@ module.exports = {
       );
 
       const categoryEmbed = new EmbedBuilder()
+      .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
       .setTitle(`${formatString(directory)} commands`)
       .setDescription(`${directory} コマンド`)
       .addFields(
@@ -90,7 +94,7 @@ module.exports = {
           let cmdDiscription = cmd.discription
           return {
             name: `\`${cmd.name}\``,
-            value: cmdDiscription,
+            value: '```' + cmdDiscription + '```',
             inline: false,
           };
         }),
