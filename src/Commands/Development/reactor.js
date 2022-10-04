@@ -3,7 +3,7 @@ const { SlashCommandBuilder, MessageActivityType } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("reactor")
-  .setDescription("dev リアクションを返すよ"),
+  .setDescription("respond to a reaction"),
   async execute(interaction, client) {
     const message = await interaction.reply({
       content: "React hera",

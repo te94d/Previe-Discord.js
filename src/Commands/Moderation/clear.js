@@ -1,5 +1,4 @@
 const {SlashCommandBuilder, CommandInteraction, PermissionFlagsBits, EmbedBuilder} = require('discord.js');
-const { execute } = require('../Public/ping');
 
 module.exports = {
   data: new SlashCommandBuilder()
