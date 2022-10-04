@@ -1,6 +1,5 @@
 const {EmbedBuilder, SlashCommandBuilder, CommandInteraction, PermissionFlagsBits} = require("discord.js");
 const fs = require('fs');
-const { userInfo } = require("os");
 const { PythonShell } = require('python-shell');
 const ytdl = require('ytdl-core');
 
@@ -8,8 +7,8 @@ const BASE_PATH = `https://www.youtube.com/watch?v=`;
 
 module.exports = {
   data: new SlashCommandBuilder()
-  .setName("mp4")
-  .setDescription("YouTubeの動画をダウンロード") //Download SNS-Platform videos
+  .setName("audio")
+  .setDescription("YouTubeの音声をダウンロード") //Download SNS-Platform audios
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addStringOption(option =>
     option.setName("youtube-id")
@@ -37,10 +36,10 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '📥 ダウンロード開始します', inline: false },
+        { name: 'state', value: '📥 ダウンロードを開始します', inline: false },
       )
       .setTimestamp()
-      .setFooter({ text: 'Save Video' })
+      .setFooter({ text: 'Save Audio' })
       .setColor(0x8ED1E0);
 
       const finishedEmbed = new EmbedBuilder()
@@ -51,10 +50,10 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '🟩 ダウンロード完了しました', inline: false },
+        { name: 'state', value: '🟩 ダウンロードを完了しました', inline: false },
       )
       .setTimestamp()
-      .setFooter({ text: 'Save Video' })
+      .setFooter({ text: 'Save Audio' })
       .setColor(0x8ED1E0);
 
       const unfinishedEmbed = new EmbedBuilder()
@@ -65,21 +64,21 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '🟥 ダウンロード中止しました', inline: false },
+        { name: 'state', value: '🟥 ダウンロードを中止しました', inline: false },
       )
       .setTimestamp()
-      .setFooter({ text: 'Save Video' })
+      .setFooter({ text: 'Save Audio' })
       .setColor(0x8ED1E0);
 
       let flag;
-      let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-video.py');  
+      let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-audio.py');  
       pyshell.send(url);
       pyshell.on('message', function (data) {
         console.log(data);
         if(data.endsWith("finish")) {
           flag = 0;
           console.log("完全に処理が行われました");
-          interaction.channel.send({embeds: [finishedEmbed], fetchReply: true });
+          interaction.editReply({embeds: [finishedEmbed], fetchReply: true });
         } else {
           flag = 1;
           console.log("処理が途中で修了しました");
