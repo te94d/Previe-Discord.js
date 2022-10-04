@@ -71,7 +71,7 @@ module.exports = {
       .setColor(0x8ED1E0);
 
       let flag;
-      let pyshell = new PythonShell('./src/Commands/Public/py/ytdlp-audio.py');  
+      let pyshell = new PythonShell('./src/Commands/General/py/ytdlp-audio.py');  
       pyshell.send(url);
       pyshell.on('message', function (data) {
         console.log(data);
