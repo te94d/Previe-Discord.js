@@ -13,7 +13,7 @@ module.exports = {
   async execute(interaction, client) {
     const emojis = {
       info: "💬",
-      general: "⚔",
+      general: "⚔️",
       moderation: "🏹",
       development: "🛡️",
     };
@@ -87,8 +87,8 @@ module.exports = {
 
       const categoryEmbed = new EmbedBuilder()
       .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
-      .setTitle(`${formatString(directory)} commands`)
-      .setDescription(`${directory} コマンド`)
+      .setTitle(`⚙️ ${formatString(directory)} commands`)
+      .setDescription(`${directory} に分類される全コマンドのリスト`)
       .addFields(
         category.commands.map((cmd) => {
           let cmdDiscription = cmd.discription
