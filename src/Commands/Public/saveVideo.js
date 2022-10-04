@@ -8,7 +8,7 @@ const BASE_PATH = `https://www.youtube.com/watch?v=`;
 
 module.exports = {
   data: new SlashCommandBuilder()
-  .setName("mp4")
+  .setName("video")
   .setDescription("YouTubeの動画をダウンロード") //Download SNS-Platform videos
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addStringOption(option =>
@@ -37,7 +37,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '📥 ダウンロード開始します', inline: false },
+        { name: 'state', value: '📥 ダウンロードを開始します', inline: false },
       )
       .setTimestamp()
       .setFooter({ text: 'Save Video' })
@@ -51,7 +51,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '🟩 ダウンロード完了しました', inline: false },
+        { name: 'state', value: '🟩 ダウンロードを完了しました', inline: false },
       )
       .setTimestamp()
       .setFooter({ text: 'Save Video' })
@@ -65,7 +65,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
-        { name: 'state', value: '🟥 ダウンロード中止しました', inline: false },
+        { name: 'state', value: '🟥 ダウンロードを中止しました', inline: false },
       )
       .setTimestamp()
       .setFooter({ text: 'Save Video' })
@@ -79,7 +79,7 @@ module.exports = {
         if(data.endsWith("finish")) {
           flag = 0;
           console.log("完全に処理が行われました");
-          interaction.channel.send({embeds: [finishedEmbed], fetchReply: true });
+          interaction.editReply({embeds: [finishedEmbed], fetchReply: true });
         } else {
           flag = 1;
           console.log("処理が途中で修了しました");
