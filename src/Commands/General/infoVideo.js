@@ -1,4 +1,4 @@
-const {EmbedBuilder, SlashCommandBuilder, CommandInteraction, PermissionFlagsBits} = require("discord.js");
+const {EmbedBuilder, SlashCommandBuilder, CommandInteraction} = require("discord.js");
 const fs = require('fs');
 const { userInfo } = require("os");
 const ytdl = require('ytdl-core');
@@ -9,7 +9,6 @@ module.exports = {
   data: new SlashCommandBuilder()
   .setName("info")
   .setDescription("動画の情報を表示") //Download SNS-Platform videos
-  .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addStringOption(option =>
     option.setName("youtube-id")
     .setDescription("動画のID") //Enter your youtube id.

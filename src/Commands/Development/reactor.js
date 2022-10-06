@@ -1,9 +1,10 @@
-const { SlashCommandBuilder, MessageActivityType } = require("discord.js");
+const { SlashCommandBuilder, MessageActivityType, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("reactor")
-  .setDescription("respond to a reaction"),
+  .setDescription("respond to a reaction")
+  .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(interaction, client) {
     const message = await interaction.reply({
       content: "React hera",

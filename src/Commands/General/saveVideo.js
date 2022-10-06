@@ -1,4 +1,4 @@
-const {EmbedBuilder, SlashCommandBuilder, CommandInteraction, PermissionFlagsBits} = require("discord.js");
+const {EmbedBuilder, SlashCommandBuilder, CommandInteraction} = require("discord.js");
 const fs = require('fs');
 const { userInfo } = require("os");
 const { PythonShell } = require('python-shell');
@@ -10,7 +10,6 @@ module.exports = {
   data: new SlashCommandBuilder()
   .setName("video")
   .setDescription("YouTubeの動画をダウンロード") //Download SNS-Platform videos
-  .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
   .addStringOption(option =>
     option.setName("youtube-id")
     .setDescription("動画のID") //Enter your youtube id.
