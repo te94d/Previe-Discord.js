@@ -44,7 +44,7 @@ module.exports = {
     const embed = new EmbedBuilder()
     .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
     .setTitle(`Commands`)
-    .setDescription("プルダウンメニューからカテゴリーを選択してください\n\n**💬 / Info**\n**⚔ / General**\n**🏹 / Moderation**\n**🛡️ / Development**")
+    .setDescription("プルダウンメニューからカテゴリーを選択してください\n\n**💬 / Info**\n**⚔️ / General**\n**🏹 / Moderation**\n**🛡️ / Development**")
     .setColor(0xc0c0c0);
 
     const components = (state) => [
