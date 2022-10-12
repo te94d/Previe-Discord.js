@@ -1,7 +1,7 @@
 # Previe-Discord.js
 [Previe-Discord.py](https://github.com/te94d/Previe-Discord.py) のリファクタリング版
 ### Previeって？  
-Preserve + Video = Previe（プレビィー）  
+Preserve + Video（Movie）= Previe（プレビィー）  
 SNSプラットフォームの動画をローカルに保存してくれるBot
 ## 開発環境
 ![](https://img.shields.io/badge/Node.js-v18.9.0-blue)
