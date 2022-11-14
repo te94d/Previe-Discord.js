@@ -1,4 +1,4 @@
-const {EmbedBuilder, SlashCommandBuilder, CommandInteraction} = require("discord.js");
+const {EmbedBuilder, SlashCommandBuilder, PermissionFlagsBits, CommandInteraction} = require("discord.js");
 const fs = require('fs');
 const { userInfo } = require("os");
 const { PythonShell } = require('python-shell');
@@ -7,7 +7,8 @@ const ytdl = require('ytdl-core');
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("allv")
-  .setDescription("いろんな動画をダウンロード") //Download SNS-Platform videos
+  .setDescription("この世の全動画をダウンロード") //Download SNS-Platform videos
+  .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
   .addStringOption(option =>
     option.setName("url")
     .setDescription("url") //Enter your youtube id.
@@ -19,7 +20,7 @@ module.exports = {
 
     const mpEmbed = new EmbedBuilder()
     .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
-    .setTitle("DLしたやつ")
+    .setTitle("DLするやつ")
     .setURL(url)
     .addFields(
       { name: 'state', value: '📥 ダウンロードを開始します', inline: false },
@@ -41,7 +42,7 @@ module.exports = {
 
     const unfinishedEmbed = new EmbedBuilder()
     .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
-    .setTitle("DLしたやつ")
+    .setTitle("DLしようとしたやつ")
     .setURL(url)
     .addFields(
       { name: 'state', value: '🟥 ダウンロードを中止しました', inline: false },
