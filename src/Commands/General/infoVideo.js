@@ -8,7 +8,7 @@ const BASE_PATH = `https://www.youtube.com/watch?v=`;
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("info")
-  .setDescription("動画の情報を表示") //Download SNS-Platform videos
+  .setDescription("YouTube動画の情報を表示") //Download SNS-Platform videos
   .addStringOption(option =>
     option.setName("youtube-id")
     .setDescription("動画のID") //Enter your youtube id.
