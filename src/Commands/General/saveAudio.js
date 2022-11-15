@@ -10,6 +10,15 @@ module.exports = {
   .setName("audio")
   .setDescription("YouTubeの音声をダウンロード") //Download SNS-Platform audios
   .addStringOption(option =>
+    option.setName("format")
+      .setDescription("/format で詳細を確認してください。")
+      .setRequired(true)
+      .addChoices(
+        { name: 'High', value: 'bestvideo' },
+        { name: 'Middle', value: 'best' },
+        { name: 'Low', value: 'best.2' },
+  ))
+  .addStringOption(option =>
     option.setName("youtube-id")
     .setDescription("動画のID") //Enter your youtube id.
     .setRequired(true)
@@ -18,7 +27,7 @@ module.exports = {
     const {channel, options} = interaction;
     const youtubeId = options.getString("youtube-id");
     const url = BASE_PATH+youtubeId;
-
+    const format = interaction.options.getString('format');
     ytdl.getInfo(youtubeId).then(info => {
       //console.log('動画info:', info.videoDetails);
       const title = info.videoDetails.title;
@@ -35,6 +44,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
+        { name: 'format', value: format, inline: false },
         { name: 'state', value: '📥 ダウンロードを開始します', inline: false },
       )
       .setTimestamp()
@@ -49,6 +59,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
+        { name: 'format', value: format, inline: false },
         { name: 'state', value: '🟩 ダウンロードを完了しました', inline: false },
       )
       .setTimestamp()
@@ -63,6 +74,7 @@ module.exports = {
       .setImage(thumbnail)
       .addFields(
         { name: 'channel', value: ch, inline: false },
+        { name: 'format', value: format, inline: false },
         { name: 'state', value: '🟥 ダウンロードを中止しました', inline: false },
       )
       .setTimestamp()
@@ -70,8 +82,17 @@ module.exports = {
       .setColor(0x8ED1E0);
 
       let flag;
-      let pyshell = new PythonShell('./src/Commands/General/py/ytdlp-audio.py');  
-      pyshell.send(url);
+      const ytdlpPath = './src/Commands/General/py/ytdlp-audio.py';
+      let options = {
+        mode: 'text',
+        pythonOption: ['-u'],
+        args:[
+          '-url', url,
+          '-format', format
+        ]
+      }
+      let pyshell = new PythonShell(ytdlpPath, options);  
+      pyshell.send();
       pyshell.on('message', function (data) {
         console.log(data);
         if(data.endsWith("finish")) {

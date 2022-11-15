@@ -1,20 +1,22 @@
 import sys
 import re
 import urllib.request
+import argparse
 from yt_dlp import YoutubeDL
 from tkinter import filedialog
 
-url = sys.stdin.readline()
-print('audio-URL : ' + url)
+parser = argparse.ArgumentParser()
+parser.add_argument("-url", help="url")
+parser.add_argument("-format", help="format")
+args = parser.parse_args()
 
-#title取得
 ydl_opts = {} 
 with YoutubeDL(ydl_opts) as ydl: 
-  meta = ydl.extract_info(url, download= False)
+  meta = ydl.extract_info(args.url, download= False)
 
 filename = filedialog.asksaveasfilename(
   title = "名前を付けて保存",
-  filetypes = [("mp3", ".mp3"),("aac", ".aac"),("wav", ".wav"),("m4a", ".m4a")],
+  filetypes = [("mp3", ".mp3"),("m4a", ".m4a"),("aac", ".aac"),("ogg", ".ogg"),("webm", ".webm")],
   initialdir = "./",
   initialfile = meta['title'],
   defaultextension = "mp3"
@@ -22,11 +24,11 @@ filename = filedialog.asksaveasfilename(
 print(filename)
 if filename:
   ydl_opts = {
-    'format': 'bestaudio/best',
+    'format': args.format,
     'outtmpl': filename,
     }
   with YoutubeDL(ydl_opts) as ydl:
-    ydl.download([url])
+    ydl.download([args.url])
   print('finish')
 else:
   print('error')

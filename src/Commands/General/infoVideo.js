@@ -24,7 +24,7 @@ module.exports = {
       const title = info.videoDetails.title;
       const ch = info.videoDetails.ownerChannelName;
       const views = info.videoDetails.viewCount;
-      const likes = info.videoDetails.likes;
+      //const likes = info.videoDetails.likes;
       const category = info.videoDetails.category;
       const uploadDate = info.videoDetails.uploadDate;
 
@@ -38,8 +38,8 @@ module.exports = {
         { name: ':dizzy: Title', value: '```' + title + '```', inline: false },
         { name: ':bell: Channel', value: '```' + ch + '```', inline: false },
         { name: ':eyes: Views', value: '```' + views + '```', inline: true },
-        { name: ':thumbsup: Likes', value: '```' + likes + '```', inline: true },
-        { name: ':label: Category', value: '```' + category + '```', inline: false },
+        //{ name: ':thumbsup: Likes', value: '```' + likes + '```', inline: true },
+        { name: ':label: Category', value: '```' + category + '```', inline: true },
         { name: ':date: Upload Date', value: '```' + uploadDate + '```', inline: false },
         { name: ':link: URL', value: '' + url + '', inline: false },
       )
