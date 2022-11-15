@@ -1,15 +1,18 @@
 import sys
 import re
 import urllib.request
+import argparse
 from yt_dlp import YoutubeDL
 from tkinter import filedialog
 
-url = sys.stdin.readline()
+parser = argparse.ArgumentParser()
+parser.add_argument("-url", help="url")
+parser.add_argument("-format", help="format")
+args = parser.parse_args()
 
-#title取得
 ydl_opts = {} 
 with YoutubeDL(ydl_opts) as ydl: 
-  meta = ydl.extract_info(url, download= False)
+  meta = ydl.extract_info(args.url, download= False)
 
 filename = filedialog.asksaveasfilename(
   title = "名前を付けて保存",
@@ -20,11 +23,11 @@ filename = filedialog.asksaveasfilename(
   )
 if filename:
   ydl_opts = {
-    'format': 'best',
+    'format': args.format,
     'outtmpl': filename,
     }
   with YoutubeDL(ydl_opts) as ydl:
-    ydl.download([url])
+    ydl.download([args.url])
   print('finish')
 else:
   print('error')
