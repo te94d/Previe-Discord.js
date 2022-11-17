@@ -3,7 +3,7 @@ const { SlashCommandBuilder, MessageActivityType, PermissionFlagsBits } = requir
 module.exports = {
   data: new SlashCommandBuilder()
   .setName("reactor")
-  .setDescription("開発中-respond to a reaction")
+  .setDescription("respond to a reaction")
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(interaction, client) {
     const message = await interaction.reply({

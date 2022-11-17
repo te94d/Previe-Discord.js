@@ -3,7 +3,7 @@ const {EmbedBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder, SlashCommandB
 module.exports = {
   data: new SlashCommandBuilder()
   .setName('createverify')
-  .setDescription('開発中-Set your verificarion channel')
+  .setDescription('Set your verificarion channel')
   .addChannelOption(option =>
     option.setName('channel')
     .setDescription('Send verification embed in this channel')
