@@ -85,10 +85,30 @@ module.exports = {
         (x) => x.directory.toLowerCase() === directory
       );
 
+      let discr = "commands discription";
+      try {
+        switch (formatString(directory)) {
+          case "Development":
+            discr = "開発中のコマンド一覧";
+            break;
+          case "General":
+            discr = "みんなが使用できるコマンド一覧";
+            break;
+          case "Info":
+            discr = "確認するコマンド一覧";
+            break;
+          case "Moderation":
+            discr = "管理者が使用できるコマンド一覧";
+            break;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+
       const categoryEmbed = new EmbedBuilder()
       .setAuthor({ name: 'Previe', iconURL: client.user.displayAvatarURL() })
       .setTitle(`⚙️ ${formatString(directory)} commands`)
-      .setDescription(`${directory} に分類される全コマンドのリスト`)
+      .setDescription(discr)
       .addFields(
         category.commands.map((cmd) => {
           let cmdDiscription = cmd.discription
