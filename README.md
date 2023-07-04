@@ -8,7 +8,7 @@ SNSプラットフォームの動画をローカルに保存してくれるBot
 ![](https://img.shields.io/badge/discord.js-v14.3.0-blue)
 ![](https://img.shields.io/badge/ytdl--core-v4.11.2-blue)
 ![](https://img.shields.io/badge/python-v3.10.6-blue)
-![](https://img.shields.io/badge/yt--dlp-v2022.8.8-blue)  
+![](https://img.shields.io/badge/yt--dlp-v2023.6.22-blue)  
 ## ビルド
 [Node.js](https://nodejs.org/ja/) をインストール  
 [python3](https://www.python.org/) をインストール

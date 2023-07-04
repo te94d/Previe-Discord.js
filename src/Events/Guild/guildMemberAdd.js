@@ -10,7 +10,7 @@ module.exports = {
       let channel = data.Channel;
       let Msg = data.Msg || " ";
       let Role = data.Role;
-
+      
       const {user, guild} = member;
       const welcomeChannel = member.guild.channels.cache.get(data.Channel);
 
